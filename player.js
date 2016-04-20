@@ -23,7 +23,7 @@ Player.prototype.draw = function()
 
 Player.prototype.update = function(deltaTime)
 {
-
+    //var velocity.set(0,0);
     var left = false;
     var right = false;
     var jump = false;
