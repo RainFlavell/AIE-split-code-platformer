@@ -2,6 +2,7 @@ var Player = function() {
   this.image = document.createElement("img");
   this.position = new Vector2();
   this.position.set( 9*TILE, 0*TILE );
+
   this.width = 159;
   this.height = 163;
   this.offset = new Vector2();
@@ -20,6 +21,7 @@ Player.prototype.draw = function()
     context.drawImage(this.image, -this.width / 2, -this.height / 2);
     context.restore();
 }
+console.log(this.position);
 
 Player.prototype.update = function(deltaTime)
 {
@@ -78,6 +80,7 @@ Player.prototype.update = function(deltaTime)
     // This means we can short-circuit and avoid building a general purpose
     // collision detection
     // engine by simply looking at the 1 to 4 cells that the player occupies:
+
     var tx = pixelToTile(this.position.x);
     var ty = pixelToTile(this.position.y);
     var nx = (this.position.x)%TILE; // true if player overlaps right
@@ -117,6 +120,7 @@ Player.prototype.update = function(deltaTime)
         this.velocity.x = 0; // stop horizontal velocity
       }
     }
+
     else if (this.velocity.x < 0) {
       if ((cell && !cellright) || (celldown && !celldiag && ny)) {
         // clamp the x position to avoid moving into the platform we just hit

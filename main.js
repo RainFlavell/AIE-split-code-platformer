@@ -11,6 +11,15 @@ var LAYER_BACKGOUND = 0;
 var LAYER_PLATFORMS = 1;
 var LAYER_LADDERS = 2;
 
+var LAYER_COUNT = 3;
+var MAP = { tw: 60, th: 15 };
+var TILE = 35;
+var TILESET_TILE = TILE * 2;
+var TILESET_PADDING = 2;
+var TILESET_SPACING = 2;
+var TILESET_COUNT_X = 14;
+var TILESET_COUNT_Y = 14;
+
 // abitrary choice for 1m
 var METER = TILE;
 // very exaggerated gravity (6x)
@@ -97,14 +106,6 @@ var chuckNorris = document.createElement("img");
 chuckNorris.src = "hero.png";
 
 
-var LAYER_COUNT = 3;
-var MAP = { tw: 60, th: 15 };
-var TILE = 35;
-var TILESET_TILE = TILE * 2;
-var TILESET_PADDING = 2;
-var TILESET_SPACING = 2;
-var TILESET_COUNT_X = 14;
-var TILESET_COUNT_Y = 14;
 
 // load the image to use for the level tiles
 var tileset = document.createElement("img");
@@ -128,6 +129,7 @@ function cellAtTileCoord(layer, tx, ty)
   return 0;
   return cells[layer][ty][tx];
 };
+
 function tileToPixel(tile)
 {
   return tile * TILE;
