@@ -30,3 +30,9 @@ Vector2.prototype.GetNormal = function () //reterns a new Vector2 that is a norm
 
   return v2;
 }
+
+Vector2.prototype.set = function (x, y)
+{
+  this.x = x;
+  this.y = y;
+}
