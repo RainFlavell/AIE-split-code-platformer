@@ -126,7 +126,7 @@ function cellAtTileCoord(layer, tx, ty)
   // let the player drop of the bottom of the screen (this means death)
   if(ty>=MAP.th)
   return 0;
-  //return cells[layer][ty][tx];
+  return cells[layer][ty][tx];
 };
 function tileToPixel(tile)
 {
