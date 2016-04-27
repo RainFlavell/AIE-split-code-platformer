@@ -8,6 +8,7 @@ var Player = function() {
   this.offset = new Vector2();
   this.offset.set(-55,-87);
   this.velocity = new Vector2();
+  this.velocity.set(0,0);
   this.falling = true;
   this.jumping = false;
   this.image.src = "hero.png";
