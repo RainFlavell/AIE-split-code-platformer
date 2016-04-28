@@ -52,6 +52,11 @@ function initialize() {
           // (because our collision squares are 35x35 but the tile in the
           // level are 70x70)
           cells[layerIdx][y][x] = 1;
+          if(y-1 >=0)
+          {
+            cells[layerIdx][y-1][x] = 1;
+            cells[layerIdx][y-1][x+1] = 1;
+          }
           //cells[layerIdx][y-1][x] = 1;
           //cells[layerIdx][y-1][x+1] = 1;
           cells[layerIdx][y][x+1] = 1;
