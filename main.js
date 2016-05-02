@@ -4,7 +4,7 @@ var context = canvas.getContext("2d");
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
 
-
+ 
 
 var LAYER_COUNT = 3;
 var LAYER_BACKGOUND = 0;
