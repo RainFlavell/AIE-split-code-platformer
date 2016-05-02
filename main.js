@@ -8,8 +8,8 @@ var endFrameMillis = Date.now();
 
 var LAYER_COUNT = 3;
 var LAYER_BACKGOUND = 0;
-var LAYER_PLATFORMS = 1;
-var LAYER_LADDERS = 2;
+var LAYER_PLATFORMS = 2;
+var LAYER_LADDERS = 1;
 
 var LAYER_COUNT = 3;
 var MAP = { tw: 60, th: 15 };
