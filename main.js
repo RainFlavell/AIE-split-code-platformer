@@ -4,15 +4,15 @@ var context = canvas.getContext("2d");
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
 
- 
+
 
 var LAYER_COUNT = 3;
-var LAYER_BACKGOUND = 0;
-var LAYER_PLATFORMS = 2;
+var LAYER_BACKGOUND = 2;
+var LAYER_PLATFORMS = 0;
 var LAYER_LADDERS = 1;
 
 var LAYER_COUNT = 3;
-var MAP = { tw: 60, th: 15 };
+var MAP = { tw: 60, th: 20 };
 var TILE = 35;
 var TILESET_TILE = TILE * 2;
 var TILESET_PADDING = 2;
