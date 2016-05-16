@@ -4,7 +4,11 @@ var context = canvas.getContext("2d");
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
 
-
+var STATE_SPLASH = 0;
+var STATE_GAME = 1;
+var STATE_GAMEOVER = 2;
+var STATE_WIN = 3;
+var gameState = STATE_SPLASH;
 
 var LAYER_COUNT = 3;
 var LAYER_BACKGOUND = 2;
@@ -88,6 +92,29 @@ function initialize() {
           isSfxPlaying = false;
         }
       } );
+    }
+
+    var splashTimer = 5;
+    function runSplash(deltaTime)
+    {
+      splashTimer -= deltaTime;
+      if(splashTimer <= 0)
+      {
+        gameState = STATE_GAME;
+        return;
+      }
+      context.fillStyle = "#000";
+      context.font="24px Arial";
+      context.fillText("SPLASH SCREEN", 200, 240);
+    }
+    function runGame(deltaTime)
+    {
+    }
+    function runWin(deltaTime)
+    {
+    }
+    function runGameOver(deltaTime)
+    {
     }
 
 // This function will return the time in seconds since the function
@@ -230,6 +257,20 @@ function run() {
     player.update(deltaTime);
     drawMap()
     player.draw();
+
+
+    switch(gameState)
+    {
+      case STATE_SPLASH:
+      runSplash(deltaTime);
+      break;
+      case STATE_GAME:
+      runGame(deltaTime);
+      break;
+      case STATE_GAMEOVER:
+      runGameOver(deltaTime);
+      break;
+    }
 
     //context.drawImage(chuckNorris, SCREEN_WIDTH/2 - chuckNorris.width/2, SCREEN_HEIGHT/2 - chuckNorris.height/2);
 
