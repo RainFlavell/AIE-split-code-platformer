@@ -8,7 +8,7 @@ var STATE_SPLASH = 0;
 var STATE_GAME = 1;
 var STATE_GAMEOVER = 2;
 var STATE_WIN = 3;
-var gameState = STATE_SPLASH;
+var  gameState = STATE_SPLASH;
 
 var LAYER_COUNT = 3;
 var LAYER_BACKGOUND = 2;
@@ -228,7 +228,7 @@ for( var layerIdx=0; layerIdx < LAYER_COUNT; layerIdx++ )
 
 var splashTimer = 5;
 function runSplash(deltaTime) {
-  context.fillStyle = "#77ff33";
+  context.fillStyle = "#ff0000";
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   splashTimer -= deltaTime;
@@ -237,16 +237,17 @@ function runSplash(deltaTime) {
     return;
 
   }
-  context.fillStyle = "#8800cc";
+  context.fillStyle = "#000000";
   context.font = "24px Arial";
   context.fillText("WOOOW!!! LETS PLAY!!!", 200, 240);
-  context.fillText("number of asteroids will exponentially increse", 150, 260);
+  context.fillText("Use Arrow Keys To Move", 150, 260);
 }
 function runGame(deltaTime)
 {
     context.fillStyle = "#ccc";
     context.fillRect(0, 0, canvas.width, canvas.height);
-    var deltaTime = getDeltaTime();
+
+
     player.update(deltaTime);
     drawMap()
     player.draw();
