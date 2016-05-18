@@ -94,28 +94,7 @@ function initialize() {
       } );
     }
 
-    var splashTimer = 5;
-    function runSplash(deltaTime)
-    {
-      splashTimer -= deltaTime;
-      if(splashTimer <= 0)
-      {
-        gameState = STATE_GAME;
-        return;
-      }
-      context.fillStyle = "#000";
-      context.font="24px Arial";
-      context.fillText("SPLASH SCREEN", 200, 240);
-    }
-    function runGame(deltaTime)
-    {
-    }
-    function runWin(deltaTime)
-    {
-    }
-    function runGameOver(deltaTime)
-    {
-    }
+
 
 // This function will return the time in seconds since the function
 // was last called
@@ -247,31 +226,30 @@ for( var layerIdx=0; layerIdx < LAYER_COUNT; layerIdx++ )
   }
 }
 
+var splashTimer = 5;
+function runSplash(deltaTime) {
+  context.fillStyle = "#77ff33";
+  context.fillRect(0, 0, canvas.width, canvas.height);
 
+  splashTimer -= deltaTime;
+  if (splashTimer <= 0) {
+    gameState = STATE_GAME;
+    return;
 
-
-function run() {
+  }
+  context.fillStyle = "#8800cc";
+  context.font = "24px Arial";
+  context.fillText("WOOOW!!! LETS PLAY!!!", 200, 240);
+  context.fillText("number of asteroids will exponentially increse", 150, 260);
+}
+function runGame(deltaTime)
+{
     context.fillStyle = "#ccc";
     context.fillRect(0, 0, canvas.width, canvas.height);
     var deltaTime = getDeltaTime();
     player.update(deltaTime);
     drawMap()
     player.draw();
-
-
-    switch(gameState)
-    {
-      case STATE_SPLASH:
-      runSplash(deltaTime);
-      break;
-      case STATE_GAME:
-      runGame(deltaTime);
-      break;
-      case STATE_GAMEOVER:
-      runGameOver(deltaTime);
-      break;
-    }
-
     //context.drawImage(chuckNorris, SCREEN_WIDTH/2 - chuckNorris.width/2, SCREEN_HEIGHT/2 - chuckNorris.height/2);
 
 
@@ -289,6 +267,40 @@ function run() {
     context.font = "14px Arial";
     context.fillText("FPS: " + fps, 5, 20, 100);
 }
+
+function runGameOver(deltaTime)
+{
+
+}
+function runWin(deltaTime)
+{
+
+}
+
+function run()
+{
+    context.fillStyle = "#ccc";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    var deltaTime = getDeltaTime();
+
+
+    switch (gameState) {
+        case STATE_SPLASH:
+            runSplash(deltaTime);
+            break;
+        case STATE_GAME:
+            runGame(deltaTime);
+            break;
+        case STATE_GAMEOVER:
+            runGameOver(deltaTime);
+            break;
+            case STATE_WIN:
+                runWin(deltaTime);
+                break;
+    }
+}
+
+
 initialize();
 
 //-------------------- Don't modify anything below here
