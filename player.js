@@ -205,8 +205,14 @@ Player.prototype.update = function(deltaTime)
         this.velocity.x = 0; // stop horizontal velocity
       }
     }
+if (this.position.y > 590 && gameState == STATE_GAME){
 
-
+    gameState = STATE_GAMEOVER;
+}
+if (this.position.x > 1680 && this.position.x < 1720 && this.position.y < 40)
+{
+  gameState = STATE_WIN;
+}
 
 
   }

@@ -3,7 +3,7 @@ var context = canvas.getContext("2d");
 
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
-
+var gameTimer = 20;
 var STATE_SPLASH = 0;
 var STATE_GAME = 1;
 var STATE_GAMEOVER = 2;
@@ -46,6 +46,7 @@ var keyboard = new Keyboard();
 var musicBackground;
 var sfxFire;
 
+
 function initialize() {
   for(var layerIdx = 0; layerIdx < LAYER_COUNT; layerIdx++) { // initialize the collision map
     cells[layerIdx] = [];
@@ -80,7 +81,7 @@ function initialize() {
       urls: ["background.ogg"],
       loop: true,
       buffer: true,
-      volume: 0.5
+      volume: 1
     } );
     musicBackground.play();
     sfxFire = new Howl(
@@ -183,6 +184,7 @@ Player.prototype.draw = function()
     return value;
   }
 
+
 function drawMap() {
   var maxTiles = Math.floor(SCREEN_WIDTH / TILE) +2;
   var tileX = pixelToTile(player.position.x);
@@ -219,14 +221,24 @@ for( var layerIdx=0; layerIdx < LAYER_COUNT; layerIdx++ )
         (TILESET_TILE + TILESET_SPACING);
         context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE,
           (x-startX)*TILE - offsetX, (y-1)*TILE, TILESET_TILE, TILESET_TILE);
+          //______________________________________________________________________________________________________________________________
+          //var apple = document.createElement("img");
+          //apple.src = "apple.png";
+          //context.drawImage(apple,200,240);
+          //__________________________________________________________________________________________________________________________
+
         }
         idx++;
       }
     }
   }
+//  var apple = document.createElement("img");
+//  apple.src = "apple.png";
+//  context.drawImage(apple,200,240);
+
 }
 
-var splashTimer = 5;
+var splashTimer = 4;
 function runSplash(deltaTime) {
   context.fillStyle = "#ff0000";
   context.fillRect(0, 0, canvas.width, canvas.height);
@@ -239,9 +251,11 @@ function runSplash(deltaTime) {
   }
   context.fillStyle = "#000000";
   context.font = "24px Arial";
-  context.fillText("WOOOW!!! LETS PLAY!!!", 200, 240);
+  context.fillText("EAT THE APPLE", 200, 240);
   context.fillText("Use Arrow Keys To Move", 150, 260);
 }
+
+
 function runGame(deltaTime)
 {
     context.fillStyle = "#ccc";
@@ -252,9 +266,7 @@ function runGame(deltaTime)
     drawMap()
     player.draw();
     //context.drawImage(chuckNorris, SCREEN_WIDTH/2 - chuckNorris.width/2, SCREEN_HEIGHT/2 - chuckNorris.height/2);
-
-
-    // update the frame counter
+      // update the frame counter
     fpsTime += deltaTime;
     fpsCount++;
     if (fpsTime >= 1) {
@@ -267,15 +279,32 @@ function runGame(deltaTime)
     context.fillStyle = "#f00";
     context.font = "14px Arial";
     context.fillText("FPS: " + fps, 5, 20, 100);
+
+
+
 }
 
 function runGameOver(deltaTime)
 {
+  context.fillStyle = "#ff0000";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+
+  context.fillStyle = "#000000";
+  context.font = "50px Arial";
+  context.fillText("YOU FAIL!", 200, 240);
+
+
 
 }
 function runWin(deltaTime)
 {
+  context.fillStyle = "#00ff00";
+  context.fillRect(0, 0, canvas.width, canvas.height);
 
+  context.fillStyle = "#000000";
+  context.font = "50px Arial";
+  context.fillText("WINNING!", 200, 240);
 }
 
 function run()
@@ -283,6 +312,8 @@ function run()
     context.fillStyle = "#ccc";
     context.fillRect(0, 0, canvas.width, canvas.height);
     var deltaTime = getDeltaTime();
+
+
 
 
     switch (gameState) {
