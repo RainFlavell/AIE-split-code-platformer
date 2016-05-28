@@ -185,6 +185,15 @@ Player.prototype.draw = function()
   }
 
 
+
+//________________________________________________________________
+  function lookAtRotation(player, apple){
+    var angleDeg = Math.atan((apple.x - player.x),(apple.y - player.y))*180/Math.PI;
+
+    return angleDeg
+  }
+//________________________________________________________________
+
 function drawMap() {
   var maxTiles = Math.floor(SCREEN_WIDTH / TILE) +2;
   var tileX = pixelToTile(player.position.x);
@@ -221,21 +230,19 @@ for( var layerIdx=0; layerIdx < LAYER_COUNT; layerIdx++ )
         (TILESET_TILE + TILESET_SPACING);
         context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE,
           (x-startX)*TILE - offsetX, (y-1)*TILE, TILESET_TILE, TILESET_TILE);
-          //______________________________________________________________________________________________________________________________
-          //var apple = document.createElement("img");
-          //apple.src = "apple.png";
-          //context.drawImage(apple,200,240);
-          //__________________________________________________________________________________________________________________________
+
 
         }
         idx++;
       }
     }
   }
-//  var apple = document.createElement("img");
-//  apple.src = "apple.png";
-//  context.drawImage(apple,200,240);
-
+  var apple = document.createElement("img");
+  apple.src = "apple.png";
+  apple.scale = 0.25;
+  context.drawImage(apple,
+    1720-worldOffsetX-apple.width/2*apple.scale, 40-apple.height/2*apple.scale,
+  apple.width*apple.scale, apple.height*apple.scale);
 }
 
 var splashTimer = 4;
