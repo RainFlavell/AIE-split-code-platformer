@@ -213,6 +213,9 @@ if (this.position.x > 1680 && this.position.x < 1720 && this.position.y < 40)
 {
   gameState = STATE_WIN;
 }
-
+//var apple = document.createElement("img");
+//apple.src = "apple.png";
+//
+//context.drawImage(apple,(math.pow(this.position.x,0)+1700),(math.pow(this.position.y,0)+40))
 
   }
