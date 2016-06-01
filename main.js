@@ -1,6 +1,7 @@
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
+var timer = 0;
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
 var gameTimer = 20;
@@ -76,6 +77,15 @@ function initialize() {
       }
     }
   }
+
+this.jumpSound = new Howl(
+  {
+urls: ["fireEffect.ogg"],
+buffer: true,
+volume: 1
+} );
+
+
   musicBackground = new Howl(
     {
       urls: ["background.ogg"],
@@ -84,15 +94,6 @@ function initialize() {
       volume: 1
     } );
     musicBackground.play();
-    sfxFire = new Howl(
-      {
-        urls: ["fireEffect.ogg"],
-        buffer: true,
-        volume: 1,
-        onend: function() {
-          isSfxPlaying = false;
-        }
-      } );
     }
 
 
@@ -286,6 +287,12 @@ function runGame(deltaTime)
     context.fillStyle = "#f00";
     context.font = "14px Arial";
     context.fillText("FPS: " + fps, 5, 20, 100);
+
+    //draw timer
+
+    timer += deltaTime;
+
+    context.fillText("time taken =" + timer, 100, 20);
 
 
 
