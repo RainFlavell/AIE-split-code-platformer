@@ -78,12 +78,13 @@ function initialize() {
     }
   }
 
-this.jumpSound = new Howl(
-  {
-urls: ["fireEffect.ogg"],
-buffer: true,
-volume: 1
-} );
+  sfxFire = new Howl(
+    {
+      urls: ["fireEffect.ogg"],
+      buffer: true,
+      volume: 1
+    } );
+
 
 
   musicBackground = new Howl(
@@ -185,15 +186,6 @@ Player.prototype.draw = function()
     return value;
   }
 
-
-
-//________________________________________________________________
-  function lookAtRotation(player, apple){
-    var angleDeg = Math.atan((apple.x - player.x),(apple.y - player.y))*180/Math.PI;
-
-    return angleDeg
-  }
-//________________________________________________________________
 
 function drawMap() {
   var maxTiles = Math.floor(SCREEN_WIDTH / TILE) +2;
